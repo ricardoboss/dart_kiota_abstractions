@@ -18,9 +18,28 @@ abstract class SerializationWriter {
   /// [key].
   FutureOr<void> writeDoubleValue(String? key, double? value);
 
+  /// Writes the specified [UuidValue] value to the buffer with an optional
+  /// given [key].
+  FutureOr<void> writeUuidValue(String? key, UuidValue? value);
+
   /// Writes the specified [DateTime] value to the buffer with an optional given
   /// [key].
   FutureOr<void> writeDateTimeValue(String? key, DateTime? value);
+
+  /// Writes the specified [Duration] value to the buffer with an optional given
+  /// [key].
+  FutureOr<void> writeDurationValue(String? key, Duration? value);
+
+  /// Writes the specified [TimeOnly] value to the buffer with an optional given
+  /// [key].
+  FutureOr<void> writeTimeOnlyValue(String? key, TimeOnly? value);
+
+  /// Writes the specified [DateOnly] value to the buffer with an optional given
+  /// [key].
+  FutureOr<void> writeDateOnlyValue(String? key, DateOnly? value);
+
+  /// Writes a null value for the specified [key].
+  FutureOr<void> writeNullValue(String? key);
 
   /// Writes the specified collection of primitive values to the buffer with an
   /// optional given [key].
@@ -60,9 +79,6 @@ abstract class SerializationWriter {
   /// Writes the specified enum value to the buffer with an optional given
   /// [key].
   FutureOr<void> writeEnumValue<T extends Enum>(String? key, T? value);
-
-  /// Writes a null value for the specified [key].
-  FutureOr<void> writeNullValue(String? key);
 
   /// Writes the specified additional data to the buffer.
   FutureOr<void> writeAdditionalData(Map<String, dynamic> value);
