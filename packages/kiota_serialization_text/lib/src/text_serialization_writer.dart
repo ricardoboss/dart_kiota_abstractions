@@ -70,7 +70,7 @@ class TextSerializationWriter implements SerializationWriter {
 
   @override
   void writeEnumValue<T extends Enum>(String? key, T? value) {
-    writeStringValue(key, value?.name);
+    writeStringValue(key, EnumRegistry.getCaseValue(value));
   }
 
   @override
@@ -112,5 +112,25 @@ class TextSerializationWriter implements SerializationWriter {
 
     _isFirst = false;
     _buffer.write(value);
+  }
+
+  @override
+  void writeDateOnlyValue(String? key, DateOnly? value) {
+    writeStringValue(key, value?.toRfc3339String());
+  }
+
+  @override
+  void writeDurationValue(String? key, Duration? value) {
+    writeStringValue(key, value?.toString());
+  }
+
+  @override
+  void writeTimeOnlyValue(String? key, TimeOnly? value) {
+    writeStringValue(key, value?.toRfc3339String());
+  }
+
+  @override
+  void writeUuidValue(String? key, UuidValue? value) {
+    writeStringValue(key, value?.uuid);
   }
 }
